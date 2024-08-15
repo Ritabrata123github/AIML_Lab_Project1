@@ -48,7 +48,6 @@ def visualize_bfs(G, bfs_path):
 
     plt.show()
 
-# Main execution
 file_path = "C:\\Users\\RITABRATA JOSH\\Downloads\\facebook_combined.txt"
 edges = load_dataset(file_path)
 G = create_graph(edges)
