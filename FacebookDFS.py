@@ -1,7 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-
-# Load the dataset from a txt file
 def load_dataset(file_path):
     edges = []
     with open(file_path, 'r') as f:
@@ -9,14 +7,10 @@ def load_dataset(file_path):
             user1, user2 = line.strip().split()
             edges.append((user1, user2))
     return edges
-
-# Create a graph using NetworkX
 def create_graph(edges):
     G = nx.Graph()
     G.add_edges_from(edges)
     return G
-
-# Iterative DFS to explore connections starting from a given user
 def dfs_iterative(G, start_node):
     visited = set()
     stack = [start_node]
@@ -29,7 +23,6 @@ def dfs_iterative(G, start_node):
 
     return visited
 
-# Visualize the graph and the DFS visited nodes
 def visualize_dfs(G, dfs_visited):
     pos = nx.spring_layout(G)
     nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=500, font_size=10, font_weight='bold')
@@ -40,12 +33,11 @@ def visualize_dfs(G, dfs_visited):
 
     plt.show()
 
-# Main execution
-file_path = "C:\\Users\\RITABRATA JOSH\\Downloads\\facebook_combined.txt"  # Replace with your file path
+file_path = "C:\\Users\\RITABRATA JOSH\\Downloads\\facebook_combined.txt"  
 edges = load_dataset(file_path)
 G = create_graph(edges)
 
-start_user = '0'  # Replace with actual user
+start_user = '0'  
 
 dfs_visited = dfs_iterative(G, start_user)
 visualize_dfs(G, dfs_visited)
