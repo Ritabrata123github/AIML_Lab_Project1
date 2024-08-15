@@ -1,9 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from collections import deque
-
-
-# Load the dataset from a txt file
 def load_dataset(file_path):
     edges = []
     with open(file_path, 'r') as f:
@@ -11,14 +8,10 @@ def load_dataset(file_path):
             user1, user2 = line.strip().split()
             edges.append((user1, user2))
     return edges
-
-# Create a graph using NetworkX
 def create_graph(edges):
     G = nx.Graph()
     G.add_edges_from(edges)
     return G
-
-# BFS to find the shortest path between two users
 def bfs_shortest_path(G, start_node, target_node):
     visited = set()
     queue = deque([[start_node]])
@@ -42,9 +35,8 @@ def bfs_shortest_path(G, start_node, target_node):
             
             visited.add(node)
 
-    return None  # If no path is found
+    return None  
 
-# Visualize the graph and the BFS path
 def visualize_bfs(G, bfs_path):
     pos = nx.spring_layout(G)
     nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=500, font_size=10, font_weight='bold')
@@ -57,12 +49,12 @@ def visualize_bfs(G, bfs_path):
     plt.show()
 
 # Main execution
-file_path = "C:\\Users\\RITABRATA JOSH\\Downloads\\facebook_combined.txt"# Replace with your file path
+file_path = "C:\\Users\\RITABRATA JOSH\\Downloads\\facebook_combined.txt"
 edges = load_dataset(file_path)
 G = create_graph(edges)
 
-start_user = '0'  # Replace with actual user
-target_user = '100'  # Replace with actual user
+start_user = '0'  
+target_user = '100'  
 
 bfs_path = bfs_shortest_path(G, start_user, target_user)
 visualize_bfs(G, bfs_path)
